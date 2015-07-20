@@ -31,8 +31,16 @@ public class CardTest {
 	@Test
 	public void test_formatStringToSimpleDate() {
 		Date expiryDate = card.formatStringToSimpleData("Nov-2017");
-		System.out.println(expiryDate);
+		//System.out.println(expiryDate);
 		assertEquals("Wed Nov 01 00:00:00 GMT 2017",expiryDate.toString());
 	}
+	
+	@Test
+	public void test_fromatSimpleDateToString() {
+		Date expiryDate = card.formatStringToSimpleData("Nov-2017");
+		String stringExpirayDate = card.formatSimpleDateToStringDate(expiryDate);
+		System.out.println(stringExpirayDate);
+	}
+
 
 }

@@ -26,10 +26,11 @@ public class Card {
 		return null;
 	}
 	
-	public static final String formatSimpleDateToStringDate(Date expiryDate) {
+	public  String formatSimpleDateToStringDate(Date expiryDate) {
 		SimpleDateFormat sdf = new SimpleDateFormat("MMM-yyyy");
 		return sdf.format(expiryDate);
 	}
+	
 
 
 	public String getBank() {
