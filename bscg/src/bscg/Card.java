@@ -5,6 +5,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+/**
+* <h1>Card class</h1>
+* The Card class receives three parameters 
+* that are formated according to specification
+* the string date parameter is formated to Date type. 
+* this enables sorting by Date. 
+* the output on the screen.
+
+* @author  Jean Karkar
+* 
+*/
 public class Card {
 
 	private String bank;
@@ -13,6 +25,13 @@ public class Card {
 	private ArrayList<String> startWithList = new ArrayList<String>();
 	private ArrayList<String> endWithList = new ArrayList<String>();
 
+	
+	/**  
+	 * createNewCard: 
+	 * sets and format fields retrieved from csv file.
+	 * @param: String parameter representing fields in the csv file
+	 * 
+	 */
 	public void createNewCard(String bank, String cardNumber, String expiryDate) {
 		this.bank = bank;
 		this.cardNumber = cardNumber;
@@ -26,6 +45,14 @@ public class Card {
 		return startWithList;
 	}
 
+	/**  
+	 * formatCardNumber: 
+	 * format a credit card number, replacing values with x.
+	 * @param: cardNumber represents a credit card
+	 * @param: startWith represents cards starting number
+	 * @param: endWith represts cards ending number
+	 * 
+	 */	
 	public String formatCardNumber(String cardNumber, String startWith,
 			String endWith) {
 		if (startWith == null)
@@ -50,6 +77,7 @@ public class Card {
 		return cardNumber;
 	}
 
+	
 	public String formatCard(String cardNumber,
 			ArrayList<String> startWithList, 
 			ArrayList<String> endWithList) {
@@ -65,7 +93,6 @@ public class Card {
 				return cardNumber;
 			}
 		}
-
 		return cardNumber;
 	}
 

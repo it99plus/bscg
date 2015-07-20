@@ -22,7 +22,36 @@ public class CardTest {
 	public void setup() {
 		card.createNewCard("HSBC Canada","5601-2345-3446-5678","Nov-2017");
 	}
+	
+	@Test
+	public void test_createNewCad() {
+		Date expiryDate = card.formatStringToSimpleDate("Nov-2017");
+		assertEquals(bank, card.getBank());
+		assertEquals(cardNumber, card.getCardNumber());
+		assertEquals(expiryDate, card.getExpiryDate());
+	}
 
+	@Test
+	public void test_addToStartWithList() {
+		card.addToStartWithList("56");
+		card.addToStartWithList("56");  // method ignores duplicate
+		card.addToStartWithList("4519"); 
+		ArrayList<String> startWithList = card.getStartWithList();
+		// System.out.println(startWithList);
+		assertTrue(startWithList.contains("56"));
+	}	
+	
+	@Test
+	public void test_addToEndWithList() {
+		card.addToEndWithList("345");
+		card.addToEndWithList("345"); // method ignores duplicates
+		ArrayList<String> endWithList = card.getEndWithList();
+		System.out.println(endWithList);
+		assertTrue(endWithList.contains("345"));
+	}
+	
+	
+	
 	@Test
 	public void test_formatStringToSimpleDate() {
 		Date expiryDate = card.formatStringToSimpleDate("Nov-2017");
@@ -37,13 +66,6 @@ public class CardTest {
 	//	System.out.println(stringExpirayDate);
 	}
 	
-	@Test
-	public void test_createNewCad() {
-		Date expiryDate = card.formatStringToSimpleDate("Nov-2017");
-		assertEquals(bank, card.getBank());
-		assertEquals(cardNumber, card.getCardNumber());
-		assertEquals(expiryDate, card.getExpiryDate());
-	}
 
 	@Test
 	public void test_toString() {
@@ -90,24 +112,6 @@ public class CardTest {
 		//System.out.println(formatedCard);
 	}
 	
-	@Test
-	public void test_addToStartWithList() {
-		card.addToStartWithList("56");
-		card.addToStartWithList("56");  // method ignores duplicate
-		card.addToStartWithList("4519"); 
-		ArrayList<String> startWithList = card.getStartWithList();
-		// System.out.println(startWithList);
-		assertTrue(startWithList.contains("56"));
-	}	
-	
-	@Test
-	public void test_addToEndWithList() {
-		card.addToEndWithList("345");
-		card.addToEndWithList("345"); // method ignores duplicates
-		ArrayList<String> endWithList = card.getEndWithList();
-		System.out.println(endWithList);
-		assertTrue(endWithList.contains("345"));
-	}
-	
+
 	
 }
