@@ -12,7 +12,7 @@ import org.junit.Test;
 
 public class CardTest {
 
-	final String bank = "HSBC Canada";
+	final String bank       = "HSBC Canada";
 	final String cardNumber = "5601-2345-3446-5678";
 	final String expiryDate = "Nov-2017";
 
@@ -20,31 +20,31 @@ public class CardTest {
 
 	@Before
 	public void setup() {
+		card.addToStartWithList("56");    // method ignores duplicates
+		card.addToStartWithList("4519");  // method ignores duplicates
+		card.addToEndWithList("345");
 		card.createNewCard("HSBC Canada", "5601-2345-3446-5678", "Nov-2017");
 	}
 
 	@Test
 	public void test_createNewCad() {
 		Date expiryDate = card.formatStringToSimpleDate("Nov-2017");
+		card.addToStartWithList("56");
+		card.createNewCard("HSBC Canada", "5601-2345-3446-5678", "Nov-2017");
+		System.out.println(card.getCardNumber());
 		assertEquals(bank, card.getBank());
-		assertEquals(cardNumber, card.getCardNumber());
+		assertEquals("56xx-xxxx-xxxx-xxxx", card.getCardNumber());
 		assertEquals(expiryDate, card.getExpiryDate());
 	}
 
 	@Test
 	public void test_addToStartWithList() {
-		card.addToStartWithList("56");
-		card.addToStartWithList("56"); // method ignores duplicate
-		card.addToStartWithList("4519");
 		ArrayList<String> startWithList = card.getStartWithList();
-		// System.out.println(startWithList);
 		assertTrue(startWithList.contains("56"));
 	}
 
 	@Test
 	public void test_addToEndWithList() {
-		card.addToEndWithList("345");
-		card.addToEndWithList("345"); // method ignores duplicates
 		ArrayList<String> endWithList = card.getEndWithList();
 		System.out.println(endWithList);
 		assertTrue(endWithList.contains("345"));
@@ -53,7 +53,6 @@ public class CardTest {
 	@Test
 	public void test_formatStringToSimpleDate() {
 		Date expiryDate = card.formatStringToSimpleDate("Nov-2017");
-		// System.out.println(expiryDate);
 		assertEquals("Wed Nov 01 00:00:00 GMT 2017", expiryDate.toString());
 	}
 
@@ -61,46 +60,36 @@ public class CardTest {
 	public void test_fromatSimpleDateToString() {
 		Date expiryDate = card.formatStringToSimpleDate("Nov-2017");
 		String stringExpirayDate = card.formatSimpleDateToString(expiryDate);
-		// System.out.println(stringExpirayDate);
+		System.out.println(stringExpirayDate);
 	}
 
 	@Test
 	public void test_toString() {
-		assertEquals(bank + " " + cardNumber + " " + expiryDate,
-				card.toString());
-		// System.out.println(card.toString());
+		assertEquals(bank + " " + "56xx-xxxx-xxxx-xxxx" + " " + expiryDate,card.toString());
 	}
 
 	@Test
 	@Ignore
 	public void test_formatCardNumber() {
-		String formatedCardNumber = card.formatCardNumber(
-				"5601-2345-3446-345 ", "", "345 ");
+		String formatedCardNumber = card.formatCardNumber("5601-2345-3446-345 ", "", "345 ");
 		assertEquals("xxxx-xxxx-xxxx-345", formatedCardNumber);
-		formatedCardNumber = card.formatCardNumber("5601-2345-3446-345", "",
-				"345");
+		formatedCardNumber = card.formatCardNumber("5601-2345-3446-345", "","345");
 		assertEquals("xxxx-xxxx-xxxx-345", formatedCardNumber);
-		formatedCardNumber = card.formatCardNumber("4519-2345-3446-345",
-				"4519", null);
+		formatedCardNumber = card.formatCardNumber("4519-2345-3446-345","4519", null);
 		assertEquals("4519-xxxx-xxxx-xxx", formatedCardNumber);
-		formatedCardNumber = card.formatCardNumber("5601-2345-3446-345", "56",
-				"");
-		// System.out.println(formatedCardNumber);
+		formatedCardNumber = card.formatCardNumber("5601-2345-3446-345", "56","");
 		assertEquals("56xx-xxxx-xxxx-xxx", formatedCardNumber);
 	}
 
 	@Test
 	public void test_formatCard() {
-		card.addToStartWithList("56");
-		card.addToStartWithList("56"); // method ignores duplicate
-		card.addToStartWithList("4519");
+		card.addToStartWithList("4519"); // method ignores duplicates
 		String formatedCard = card.formatCard("5601-2345-3446-345");
 		System.out.println(formatedCard);
 		formatedCard = card.formatCard("4519-2345-3446-3345");
 		System.out.println(formatedCard);
 		assertEquals("4519-xxxx-xxxx-xxxx", formatedCard);
 
-		card.addToEndWithList("345");
 		card.addToEndWithList("345"); // method ignores duplicates
 		formatedCard = card.formatCard("3301-2345-3446-345");
 		System.out.println(formatedCard);

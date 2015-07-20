@@ -34,7 +34,7 @@ public class Card {
 	 */
 	public void createNewCard(String bank, String cardNumber, String expiryDate) {
 		this.bank = bank;
-		this.cardNumber = cardNumber;
+		this.cardNumber = formatCard(cardNumber);
 		this.expiryDate = formatStringToSimpleDate(expiryDate);
 	}
 
@@ -66,11 +66,9 @@ public class Card {
 
 		if (startWith != "" && cardNumber.trim().startsWith(startWith)) {
 			cardNumber = cardNumber.substring(0, startWith.length())
-					+ cardNumber.substring(startWith.length()).replaceAll(
-							"[0-9]", "x");
+					+ cardNumber.substring(startWith.length()).replaceAll("[0-9]", "x");
 		} else if (endWith != "" && cardNumber.trim().endsWith(endWith)) {
-			cardNumber = cardNumber.substring(0,
-					cardNumber.length() - (endWith.length())).replaceAll(
+			cardNumber = cardNumber.substring(0,cardNumber.length() - (endWith.length())).replaceAll(
 					"[0-9]", "x")
 					+ endWith;
 		}
