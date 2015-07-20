@@ -47,10 +47,10 @@ public class Card {
 
 	/**  
 	 * formatCardNumber: 
-	 * format a credit card number, replacing values with x.
+	 * formats a credit card number, replacing values with x.
 	 * @param: cardNumber represents a credit card
 	 * @param: startWith represents cards starting number
-	 * @param: endWith represts cards ending number
+	 * @param: endWith represents cards ending number
 	 * 
 	 */	
 	public String formatCardNumber(String cardNumber, String startWith,
@@ -78,16 +78,14 @@ public class Card {
 	}
 
 	
-	public String formatCard(String cardNumber,
-			ArrayList<String> startWithList, 
-			ArrayList<String> endWithList) {
-		for (String startString : startWithList) {
+	public String formatCard(String cardNumber) {
+		for (String startString : this.startWithList) {
 			if (cardNumber.trim().startsWith(startString)) {
 				cardNumber = formatCardNumber(cardNumber, startString, "");
 				return cardNumber;
 			}
 		}
-		for (String endString : endWithList) {
+		for (String endString : this.endWithList) {
 			if (cardNumber.trim().endsWith(endString)) {
 				cardNumber = formatCardNumber(cardNumber, "", endString);
 				return cardNumber;
