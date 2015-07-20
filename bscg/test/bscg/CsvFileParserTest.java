@@ -33,8 +33,9 @@ public class CsvFileParserTest {
 	public void test_loadDataFromCsvFile() throws FileNotFoundException {
 		String csvFileName = "csvFiles/csvToRead.txt";
 		CsvFileParser csvFileParser = new CsvFileParser(csvFileName);
-		csvFileParser.loadDataFromCsvFile();
+		Banks banks = csvFileParser.loadDataFromCsvFile();
 		assertEquals(csvFileName, csvFileParser.getCsvFileName());
+		assertNull(banks);
 	}
 
 }
