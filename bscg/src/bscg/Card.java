@@ -1,5 +1,6 @@
 package bscg;
 
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,15 +9,15 @@ public class Card {
 
 	private String bank;
 	private String cardNumber;
-	private String expiryDate;
+	private Date expiryDate;
 
 	public void createNewCard(String bank, String cardNumber, String expiryDate) {
 		this.bank = bank;
 		this.cardNumber = cardNumber;
-		this.expiryDate = expiryDate;
+		this.expiryDate = formatStringToSimpleDate(expiryDate);
 	}
 
-	public Date formatStringToSimpleData(String expiryDate) {
+	public Date formatStringToSimpleDate(String expiryDate) {
 		SimpleDateFormat sdf = new SimpleDateFormat("MMM-yyyy");
 		try {
 			return sdf.parse(expiryDate);
@@ -25,14 +26,18 @@ public class Card {
 		}
 		return null;
 	}
-	
-	public  String formatSimpleDateToStringDate(Date expiryDate) {
+
+	public  String formatSimpleDateToString(Date expiryDate) {
 		SimpleDateFormat sdf = new SimpleDateFormat("MMM-yyyy");
 		return sdf.format(expiryDate);
 	}
 	
+	@Override
+	public String toString() {
+		return bank + " " + cardNumber + " " + formatSimpleDateToString(this.expiryDate);
+	}
 
-
+	
 	public String getBank() {
 		return bank;
 	}
@@ -49,17 +54,13 @@ public class Card {
 		this.cardNumber = cardNumber;
 	}
 
-	public String getExpiryDate() {
+	public Date getExpiryDate() {
 		return expiryDate;
 	}
 
-	public void setExpiryDate(String expiryDate) {
+	public void setExpiryDate(Date expiryDate) {
 		this.expiryDate = expiryDate;
 	}
 
-	public String formatSimpleDateToString() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }
