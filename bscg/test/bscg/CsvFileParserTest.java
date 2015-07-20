@@ -2,6 +2,8 @@ package bscg;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,6 +26,14 @@ public class CsvFileParserTest {
 		String csvFileName;
 		csvFileName = "csvFiles/csvToRead.txt";
 		CsvFileParser csvFileParser = new CsvFileParser(csvFileName);
+		assertEquals(csvFileName, csvFileParser.getCsvFileName());
+	}
+	
+	@Test
+	public void test_loadDataFromCsvFile() throws FileNotFoundException {
+		String csvFileName = "csvFiles/csvToRead.txt";
+		CsvFileParser csvFileParser = new CsvFileParser(csvFileName);
+		csvFileParser.loadDataFromCsvFile();
 		assertEquals(csvFileName, csvFileParser.getCsvFileName());
 	}
 
