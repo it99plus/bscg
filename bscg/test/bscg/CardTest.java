@@ -48,6 +48,16 @@ public class CardTest {
 		System.out.println(card.toString());
 	}
 
-	
+	@Test
+	public void test_formatCardNumber() {
+		String formatedCardNumber = card.formatCardNumber("5601-2345-3446-345 ","","345 ");
+		assertEquals("xxxx-xxxx-xxxx-345", formatedCardNumber);
+		formatedCardNumber = card.formatCardNumber("5601-2345-3446-345","","345");
+		assertEquals("xxxx-xxxx-xxxx-345", formatedCardNumber);
+		formatedCardNumber = card.formatCardNumber("4519-2345-3446-345","4519",null);
+		System.out.println(formatedCardNumber);
+		assertEquals("4519-xxxx-xxxx-xxx", formatedCardNumber);
+		
+	}
 
 }

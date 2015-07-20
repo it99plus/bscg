@@ -16,6 +16,24 @@ public class Card {
 		this.cardNumber = cardNumber;
 		this.expiryDate = formatStringToSimpleDate(expiryDate);
 	}
+	
+	public String formatCardNumber(String cardNumber,String startWith, String endWith) {
+		
+		if (startWith == null) startWith = "";
+		if (endWith == null) endWith = "";
+		
+		cardNumber = cardNumber.trim();
+		startWith = startWith.trim();
+		endWith = endWith.trim();
+		
+		if (startWith!="" && cardNumber.trim().startsWith(startWith)) { 
+			cardNumber=cardNumber.substring(0,startWith.length())+cardNumber.substring(startWith.length()).replaceAll("[0-9]", "x");
+		} else if (endWith!="" && cardNumber.trim().endsWith(endWith)) {
+			cardNumber = cardNumber.substring(0, cardNumber.length()-(endWith.length())).replaceAll("[0-9]", "x")+endWith;
+		}
+		return cardNumber;
+	}
+	
 
 	public Date formatStringToSimpleDate(String expiryDate) {
 		SimpleDateFormat sdf = new SimpleDateFormat("MMM-yyyy");
@@ -37,7 +55,6 @@ public class Card {
 		return bank + " " + cardNumber + " " + formatSimpleDateToString(this.expiryDate);
 	}
 
-	
 	public String getBank() {
 		return bank;
 	}
@@ -62,5 +79,5 @@ public class Card {
 		this.expiryDate = expiryDate;
 	}
 
-	
+
 }
