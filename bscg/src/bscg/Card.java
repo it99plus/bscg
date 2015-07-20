@@ -1,8 +1,8 @@
 package bscg;
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Card {
@@ -34,6 +34,22 @@ public class Card {
 		return cardNumber;
 	}
 	
+	public String formatCard(String cardNumber, ArrayList<String> startWithList,ArrayList<String> endWithList) {
+		for (String startString : startWithList) {
+			if (cardNumber.trim().startsWith(startString)) {
+				cardNumber = formatCardNumber(cardNumber,startString,"");
+				return cardNumber;
+			}
+		}
+		for (String endString : endWithList) {
+			if (cardNumber.trim().endsWith(endString)) {
+				cardNumber = formatCardNumber(cardNumber,"",endString);
+				return cardNumber;
+			}
+		}		
+		
+		return cardNumber;
+	}
 
 	public Date formatStringToSimpleDate(String expiryDate) {
 		SimpleDateFormat sdf = new SimpleDateFormat("MMM-yyyy");
@@ -78,6 +94,5 @@ public class Card {
 	public void setExpiryDate(Date expiryDate) {
 		this.expiryDate = expiryDate;
 	}
-
 
 }
