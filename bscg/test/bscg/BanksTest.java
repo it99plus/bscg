@@ -1,6 +1,6 @@
 package bscg;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,6 @@ public class BanksTest {
 		card = new Card();
 	}
 	
-	
 	@Test
 	public void test_addCard() {
 		banks = new Banks();
@@ -30,7 +29,21 @@ public class BanksTest {
 		for (Card card : cards) {
 			System.out.println(card.toString());
 		}
-		
 	}
+		
+	@Test 
+	public void test_sortOnExpiryDate() {
+		banks.sortOnExpiryDate();
+		for (Card card : banks.getCards()) {
+			System.out.println(card.toString());
+		}
+	}		
+	
+	@Test 
+	public void test_sortByBank() {
+		banks.sortByBank();
+	}		
+	
+		
 
 }
