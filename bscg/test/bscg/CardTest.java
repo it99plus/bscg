@@ -1,6 +1,7 @@
 package bscg;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -86,8 +87,27 @@ public class CardTest {
 		
 		formatedCard = card.formatCard("4519-2345-3446-335",startWithList, endWithList);
 		// assertEquals("4519-xxxx-xxxx-xxx", formatedCard);
-		System.out.println(formatedCard);
+		//System.out.println(formatedCard);
 	}
 	
-
+	@Test
+	public void test_addToStartWithList() {
+		card.addToStartWithList("56");
+		card.addToStartWithList("56");  // method ignores duplicate
+		card.addToStartWithList("4519"); 
+		ArrayList<String> startWithList = card.getStartWithList();
+		// System.out.println(startWithList);
+		assertTrue(startWithList.contains("56"));
+	}	
+	
+	@Test
+	public void test_addToEndWithList() {
+		card.addToEndWithList("345");
+		card.addToEndWithList("345"); // method ignores duplicates
+		ArrayList<String> endWithList = card.getEndWithList();
+		System.out.println(endWithList);
+		assertTrue(endWithList.contains("345"));
+	}
+	
+	
 }
