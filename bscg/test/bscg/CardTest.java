@@ -2,7 +2,9 @@ package bscg;
 
 import static org.junit.Assert.assertEquals;
 
+import java.text.ParseException;
 import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +23,7 @@ public class CardTest {
 	}
 
 	@Test
-	public void test_createNewCad() {
+	public void test_createNewCad() throws ParseException {
 		Date expiryDate = FormatterUtil.formatStringToSimpleDate("Nov-2017");
 		System.out.println(expiryDate);
 		FormatterUtil.addToStartWithList("56");
@@ -38,7 +40,7 @@ public class CardTest {
 	}
 
 	@Test
-	public void test_compareTo() {
+	public void test_compareTo() throws ParseException {
 		Card oCard = new Card();
 		card.createNewCard("HSBC Canada", "5601-2345-3446-5678", "Nov-2017");
 		oCard.createNewCard("HSBC Canada", "5601-2345-3446-5678", "Nov-2017");

@@ -3,6 +3,7 @@ package bscg;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -48,13 +49,13 @@ public class FormatterUtilTest {
 	/////////////////////////////////////////////////////////////////////////////////
 	
 	@Test
-	public void test_formatStringToSimpleDate() {
+	public void test_formatStringToSimpleDate() throws ParseException {
 		Date expiryDate = FormatterUtil.formatStringToSimpleDate("Nov-2017");
 		assertEquals("Wed Nov 01 00:00:00 GMT 2017", expiryDate.toString());
 	}
 
 	@Test
-	public void test_fromatSimpleDateToString() {
+	public void test_fromatSimpleDateToString() throws ParseException {
 		Date expiryDate = FormatterUtil.formatStringToSimpleDate("Nov-2017");
 		String stringExpirayDate = FormatterUtil.formatSimpleDateToString(expiryDate);
 		System.out.println(stringExpirayDate);

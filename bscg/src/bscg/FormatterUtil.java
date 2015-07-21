@@ -8,19 +8,19 @@ import java.util.Date;
 public class FormatterUtil {
 
 	// @formatter:off
-	static ArrayList<String> startWithList = new ArrayList<String>();
-	static ArrayList<String> endWithList = new ArrayList<String>();
+	public static ArrayList<String> startWithList = new ArrayList<String>();
+	public static ArrayList<String> endWithList = new ArrayList<String>();
 
-	static ArrayList<String> getEndWithList() {return endWithList;}
-	static ArrayList<String> getStartWithList() {return startWithList;}
+	public static final ArrayList<String> getEndWithList() {return endWithList;}
+	public static final ArrayList<String> getStartWithList() {return startWithList;}
 	//@formatter:on
 
-	static void addToStartWithList(String startWith) {
+	public static final void addToStartWithList(String startWith) {
 		if (FormatterUtil.startWithList.contains(startWith) != true)
 			FormatterUtil.startWithList.add(startWith);
 	}
 
-	static void addToEndWithList(String endtWith) {
+	public static final void addToEndWithList(String endtWith) {
 		if (FormatterUtil.endWithList.contains(endtWith) != true)
 			FormatterUtil.endWithList.add(endtWith);
 	}
@@ -28,25 +28,22 @@ public class FormatterUtil {
 	// ///////////////////////////////////////////////////////////////////////////////
 	// //////////////////////////////////////////////////////////////////////////////
 
-	static Date formatStringToSimpleDate(String expiryDate) {
+	public static final Date formatStringToSimpleDate(String expiryDate) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("MMM-yyyy");
 		try {
 			return sdf.parse(expiryDate);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 		return null;
 	}
 
-	static String formatSimpleDateToString(Date expiryDate) {
+	public static final String formatSimpleDateToString(Date expiryDate) {
 		SimpleDateFormat sdf = new SimpleDateFormat("MMM-yyyy");
 		return sdf.format(expiryDate);
 	}
 
-	// //////////////////////////////////////////////////////////////////////////////
-	// //////////////////////////////////////////////////////////////////////////////
-
-	static String formatCard(String cardNumber) {
+	public static final String formatCard(String cardNumber) {
 		for (String startString : FormatterUtil.startWithList) {
 			if (cardNumber.trim().startsWith(startString)) {
 				cardNumber = formatCardNumber(cardNumber, startString, "");

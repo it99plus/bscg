@@ -2,6 +2,7 @@ package bscg;
 
 import static org.junit.Assert.assertTrue;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class BanksTest {
 	}
 	
 	@Test
-	public void test_addCard() {
+	public void test_addCard() throws ParseException {
 		banks = new Banks();
 		card.createNewCard("HSBC Canada", "5601-2345-3446-5678", "Nov-2017");
 		banks.addCard(card);

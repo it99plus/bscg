@@ -10,15 +10,10 @@ public class Banks {
 
 	//@formatter:off
 	public Banks() {cards = new ArrayList<Card>();}
-	//@formatter:on
-
-	public void addCard(Card card) {
-		cards.add(card);
-	}
 	
-	public List<Card> getCards() {
-		return cards;
-	}
+	public void addCard(Card card) {cards.add(card);}
+	
+	public List<Card> getCards() {return cards;}
 	
 	@Override
 	public String toString() {
@@ -29,14 +24,9 @@ public class Banks {
 		return resultSb .toString();
 	}
 	
-
-	public void sortOnExpiryDate() {
-		Collections.sort(cards);	
-	}
-
+	public void sortOnExpiryDate() {Collections.sort(cards);}
 	
-	public void sortByBank() {
-		Collections.sort(cards, Card.getBankComparator());
-	}
+	public void sortByBank() {Collections.sort(cards, Card.getBankComparator());}
+	//@formatter:on
 
 }
