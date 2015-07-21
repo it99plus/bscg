@@ -5,6 +5,12 @@ import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
 
+
+/**
+ * Card creates a card with fields that represent a record in the csv file.
+ * 
+ * @author Jean Karkar
+ */
 public class Card implements Comparable<Card> {
 	//@formatter:off
 	private String bank;
@@ -31,6 +37,10 @@ public class Card implements Comparable<Card> {
 	
 	public Date getExpiryDate() {return expiryDate;}
 	
+	
+	/** 
+	 * comparTo is used by Bank object to sort cards list by Date + Bank 
+	 */
 	@Override
 	public int compareTo(Card o) {
 		
@@ -45,6 +55,12 @@ public class Card implements Comparable<Card> {
 		return sComp;
 	}
 
+	/** 
+	 * bankComparator references an anonymous class of Comparator<Card> type.
+	 * It compares to Card Objects on bank + date
+	 * 
+	 * references to Comparator<Card> is returned by getBankComparator().
+	 */
 	private static final Comparator<Card> bankComparator = new Comparator<Card>() {
 		@Override
 		public int compare(Card o1, Card o2) {
@@ -81,6 +97,11 @@ public class Card implements Comparable<Card> {
 		}
 	};
 
+	/** 
+	 * getBankComparator() returns bankComparator reference to an anonymous Comparator<Card>() 
+	 * object, used by Banks class to sort a a List<Card> by bank + date. 
+	 * 
+	 */
 	public static Comparator<Card> getBankComparator() {
 		return bankComparator;
 

@@ -3,28 +3,46 @@ package bscg;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 
+
+/**
+ * Main demonstrate the usage of the Java csv parser test, producing the expected result.
+ *
+ * @author Jean Karkar
+ */
 public class Main {
 	
 	private static String FILE_NAME = "csvFiles/csvToRead.txt";
 	
 	public static void main(String[] args) throws ArrayIndexOutOfBoundsException, FileNotFoundException, ParseException  {
 		try {
-			// fixtures
-			CsvFileParser csvFileParser = new CsvFileParser(FILE_NAME);
-			FormatterUtil.addToStartWithList("56");
-			FormatterUtil.addToStartWithList("4519");
-			FormatterUtil.addToEndWithList("345");
+			/////////////////////////////////////////////////////////////////////////
+			/////////////////////////////////////////////////////////////////////////
+			CsvFileParser csvFileParser = new CsvFileParser(FILE_NAME);   // csv file
+			// class FormatterUtil contains  static methods used across the application.
+			// It has two static ArrayList fields - one is populated with the
+			// "starting numbers" of bank cards to be masked, and the second
+			// is populated with the "ending numbers" of cards to be masked.  
+			// Cards that do not start or end with any of these numbers are ignored 
+			// and will not be masked.
+			csvFileParser.addEndWith("56");		// calls FormatterUtil.addToStartWithList("56")
+			csvFileParser.addEndWith("4519");	// calls FormatterUtil.addToStartWithList("4519")
+			csvFileParser.addEndWith("345");    // calls FormatterUtil.addToEndWithList("345");
+			// FormatterUtil.addToStartWithList("56");
+			// FormatterUtil.addToStartWithList("4519");
+			// FormatterUtil.addToEndWithList("345");
 			
 			System.out.println("Starting with: "+ FormatterUtil.startWithList);
 			System.out.println("Ending with  : "+ FormatterUtil.endWithList);
 			System.out.println();
 			System.out.println();
+			/////////////////////////////////////////////////////////////////////////
+			/////////////////////////////////////////////////////////////////////////
 			
+			//////////////////////////////////////////////////////////////////////// 
 			Banks banks = csvFileParser.loadDataFromCsvFile();
-			
-			/////////////////////////////////////////////////////
 			banks.sortByBank();
-			/////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////////
+			
 			System.out.println("Sorted by Bank + Date:");
 			System.out.printf("%-22s %-10s %-20s\n","Banks","Expiry Date","Credit Cards");
 			System.out.println("----------------------------------------------------------");

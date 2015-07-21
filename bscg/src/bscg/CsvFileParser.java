@@ -5,6 +5,13 @@ import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.Scanner;
 
+
+/**
+ * CsvFileParser loads fields from a csv file. Populates an ArrayList field in 
+ * Banks with Card objects.  A Card object represents a record in the csv file.
+ *
+ * @author Jean Karkar
+ */
 public class CsvFileParser {
 	//@formatter:off
 	private String csvFileName;

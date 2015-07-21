@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
+/**
+ * Banks maintains an ArrayList of all Card objects representing a record in the csv file. 
+ *
+ * @author Jean Karkar
+ */
 public class Banks {
 
 	private List<Card> cards;  // List Type Interface

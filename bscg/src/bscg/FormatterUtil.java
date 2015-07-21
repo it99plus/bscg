@@ -5,22 +5,42 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+/**
+ * FormatterUtil contains several static methods shared among all Objects in this 
+ * application (package)
+ * The static class also hold two public static ArrayList that are parsed for all the starting 
+ * and ending of cards that must be masked.
+ * All other card will not me masked.
+ *
+ * @author Jean Karkar
+ */
 public class FormatterUtil {
 
 	// @formatter:off
+	
+	/* holds the list off numbers cards start with, and to be omitted  when masking the card */
 	public static ArrayList<String> startWithList = new ArrayList<String>();
+	
+	/* holds the list off numbers cards end with, and to be omitted  when masking the card */
 	public static ArrayList<String> endWithList = new ArrayList<String>();
 
 	public static final ArrayList<String> getEndWithList() {return endWithList;}
 	public static final ArrayList<String> getStartWithList() {return startWithList;}
 	//@formatter:on
 
-	public static final void addToStartWithList(String startWith) {
+	/** 
+	 * adds a card staring number to the ArryList of cards to be masked. 
+	 */
+	static final void addToStartWithList(String startWith) {
 		if (FormatterUtil.startWithList.contains(startWith) != true)
 			FormatterUtil.startWithList.add(startWith);
 	}
 
-	public static final void addToEndWithList(String endtWith) {
+	/** 
+	 * adds a card ending  number to the ArryList of cards to be masked. 
+	 */
+	static final void addToEndWithList(String endtWith) {
 		if (FormatterUtil.endWithList.contains(endtWith) != true)
 			FormatterUtil.endWithList.add(endtWith);
 	}
@@ -28,22 +48,33 @@ public class FormatterUtil {
 	// ///////////////////////////////////////////////////////////////////////////////
 	// //////////////////////////////////////////////////////////////////////////////
 
-	public static final Date formatStringToSimpleDate(String expiryDate) throws ParseException {
+	/** 
+	 *  format String Date to SimpleDateFormat "MMM-YYY"
+	 */
+	static final Date formatStringToSimpleDate(String expiryDate) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("MMM-yyyy");
 		try {
 			return sdf.parse(expiryDate);
 		} catch (ParseException e) {
-			// e.printStackTrace();
 		}
 		return null;
 	}
 
-	public static final String formatSimpleDateToString(Date expiryDate) {
+	/** 
+	 *  format Date to SimpleDateFormat "MMM-YYY"
+	 */
+	static final String formatSimpleDateToString(Date expiryDate) {
 		SimpleDateFormat sdf = new SimpleDateFormat("MMM-yyyy");
 		return sdf.format(expiryDate);
 	}
 
-	public static final String formatCard(String cardNumber) {
+	/** 
+	 *  checks if the card number start with a number in the startWithList.
+	 *  checks if the card number ends  with a number in the endWithList.
+	 *  
+	 *  calls formatCardNumber(..) to mask the card number if found in a List.
+	 */
+	static final String formatCard(String cardNumber) {
 		for (String startString : FormatterUtil.startWithList) {
 			if (cardNumber.trim().startsWith(startString)) {
 				cardNumber = formatCardNumber(cardNumber, startString, "");
@@ -60,7 +91,10 @@ public class FormatterUtil {
 	}
 
 	// @formatter:off
-	public static String formatCardNumber(String cardNumber, String startWith,	String endWith) {
+	/** 
+	 *  masks a card number. sratWith and endWith characters are not masked.
+	 */
+	static String formatCardNumber(String cardNumber, String startWith,	String endWith) {
 		
 		if (startWith == null)	startWith = "";
 		if (endWith == null)	endWith = "";
