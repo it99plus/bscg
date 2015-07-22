@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 
 /**
- * CsvFileParser loads fields from a csv file. Populates an ArrayList field in 
- * Banks with Card objects.  A Card object represents a record in the csv file.
+ * CsvFileParser loads fields from a csv file. Populates ArrayList field, in 
+ * Banks, with Card objects. Card object represents a record in the csv file.
  *
  * @author Jean Karkar
  */

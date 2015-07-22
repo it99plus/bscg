@@ -66,7 +66,7 @@ public class Main {
 		} catch (ArrayIndexOutOfBoundsException aioobe) {
 			System.out.println("Data integrity failure...");
 		} catch (IllegalStateException e) {
-			System.out.println("Data integrity failure in csv file: check daate format in csv file...");
+			System.out.println("Data integrity failure in csv file: check date format in csv file...");
 			e.printStackTrace();
 		}
 	}
