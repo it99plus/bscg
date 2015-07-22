@@ -24,8 +24,8 @@ public class Main {
 			// is populated with the "ending numbers" of cards to be masked.  
 			// Cards that do not start or end with any of these numbers are ignored 
 			// and will not be masked.
-			csvFileParser.addEndWith("56");		// calls FormatterUtil.addToStartWithList("56")
-			csvFileParser.addEndWith("4519");	// calls FormatterUtil.addToStartWithList("4519")
+			csvFileParser.addStartWith("56");		// calls FormatterUtil.addToStartWithList("56")
+			csvFileParser.addStartWith("4519");	// calls FormatterUtil.addToStartWithList("4519")
 			csvFileParser.addEndWith("345");    // calls FormatterUtil.addToEndWithList("345");
 			// FormatterUtil.addToStartWithList("56");
 			// FormatterUtil.addToStartWithList("4519");
