@@ -56,10 +56,25 @@ public class CsvFileParserTest {
 			throws ArrayIndexOutOfBoundsException, ParseException {
 		String[] fields = { "HSBC Canada", "5601-2345-3446-5678", "Nov-2017" };
 		Card card = csvFileParser.createNewCardFromRow(fields);
-		assertEquals("HSBC Canada 5601-2345-3446-5678 Nov-2017",
-				card.toString());
+		assertEquals("HSBC Canada 5601-2345-3446-5678 Nov-2017",card.toString());
 		System.out.println(card);
 
 	}
-
+	
+	@Test
+	public void test_AddandDeleteEntriesToStartWithList() {
+		csvFileParser.addStartWith("1111");
+		assertTrue(FormatterUtil.getStartWithList().contains("1111"));
+		csvFileParser.deleteEntryFromStartWithList("1111");
+		assertFalse(FormatterUtil.getStartWithList().contains("1111"));
+	}
+	
+	@Test
+	public void test_AddandDeleteEntriesToEndtWithList() {
+		csvFileParser.addEndWith("1111");
+		assertTrue(FormatterUtil.getEndWithList().contains("1111"));
+		csvFileParser.deleteEntryFromEndtWithList("1111");
+		assertFalse(FormatterUtil.getEndWithList().contains("1111"));
+	}
+	
 }

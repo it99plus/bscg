@@ -22,6 +22,12 @@ public class CsvFileParser {
 
 	public void addEndWith(String endWith) {FormatterUtil.addToEndWithList(endWith);}
 
+	public void deleteEntryFromEndtWithList(String startWith) {FormatterUtil.deleteEntryFromEndtWithList(startWith);}
+
+	public void deleteEntryFromStartWithList(String endWith) {FormatterUtil.deleteEntryFromStartWithList(endWith);}
+	
+	
+	
 	public String getCsvFileName() {return csvFileName;}
 
 	public Card createNewCardFromRow(String[] fields) throws ArrayIndexOutOfBoundsException, ParseException {
