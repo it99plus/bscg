@@ -31,8 +31,8 @@ public class Main {
 			// FormatterUtil.addToStartWithList("4519");
 			// FormatterUtil.addToEndWithList("345");
 			
-			System.out.println("Starting with: "+ FormatterUtil.startWithList);
-			System.out.println("Ending with  : "+ FormatterUtil.endWithList);
+			System.out.println("Starting with: "+ FormatterUtil.getStartWithList());
+			System.out.println("Ending with  : "+ FormatterUtil.getEndWithList());
 			System.out.println();
 			System.out.println();
 			/////////////////////////////////////////////////////////////////////////

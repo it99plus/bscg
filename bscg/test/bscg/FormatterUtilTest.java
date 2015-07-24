@@ -33,6 +33,13 @@ public class FormatterUtilTest {
 	}
 
 	@Test
+	public void test_getStartWithList() {
+		assertEquals("Starting with: [56, 4519]","Starting with: "+ FormatterUtil.getStartWithList());
+		assertEquals("Ending with  : [345]","Ending with  : "+ FormatterUtil.getEndWithList());
+	}			
+	
+	
+	@Test
 	public void test_addToStartWithList() {
 		ArrayList<String> startWithList = FormatterUtil.getStartWithList();
 		assertTrue(startWithList.contains("56")); // method ignores duplicates
