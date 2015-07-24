@@ -45,9 +45,23 @@ public class FormatterUtil {
 			FormatterUtil.endWithList.add(endtWith);
 	}
 	
-	/** 
-	 * adds a card staring number to the ArryList of cards to be masked. 
+	/**    
+	 * removes an entry from startWithList. 
 	 */
+	public static final void deleteEntryFromStartWithList(String entryToDlete) {
+		int indexEntryToDlete = FormatterUtil.startWithList.indexOf(entryToDlete);
+		if (indexEntryToDlete != -1)
+			FormatterUtil.startWithList.remove(indexEntryToDlete);
+	}
+	
+	/**    
+	 * removes an entry from startWithList. 
+	 */
+	public static final void deleteEntryFromEndtWithList(String entryToDlete) {
+		int indexEntryToDlete=FormatterUtil.endWithList.indexOf(entryToDlete);
+		if (indexEntryToDlete != -1)
+			FormatterUtil.endWithList.remove(indexEntryToDlete);
+	}
 
 
 	// ///////////////////////////////////////////////////////////////////////////////

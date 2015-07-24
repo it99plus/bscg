@@ -34,9 +34,26 @@ public class FormatterUtilTest {
 
 	@Test
 	public void test_getStartWithList() {
-		assertEquals("Starting with: [56, 4519]","Starting with: "+ FormatterUtil.getStartWithList());
+		
+	}		
+	
+	@Test
+	public void test_getEndWithList() {
 		assertEquals("Ending with  : [345]","Ending with  : "+ FormatterUtil.getEndWithList());
-	}			
+	}		
+	
+	@Test
+	public void test_deleteStartWithList() {
+		FormatterUtil.deleteEntryFromStartWithList("4519");
+		assertEquals("Starting with: [56]","Starting with: "+ FormatterUtil.getStartWithList());
+	}		
+	
+
+	@Test
+	public void test_deleteEndWithList() {
+		FormatterUtil.deleteEntryFromEndtWithList("345");
+		assertEquals("Ending with: []","Ending with: "+ FormatterUtil.getEndWithList());
+	}		
 	
 	
 	@Test
